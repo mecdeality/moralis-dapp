@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/moralis-dapp/static/css/main.fcf70f67.css",
+    "main.js": "/moralis-dapp/static/js/main.4cdf152b.js",
+    "static/media/cryptos.png": "/moralis-dapp/static/media/cryptos.e012a136e19f9190b8f9.png",
+    "index.html": "/moralis-dapp/index.html",
+    "main.fcf70f67.css.map": "/moralis-dapp/static/css/main.fcf70f67.css.map",
+    "main.4cdf152b.js.map": "/moralis-dapp/static/js/main.4cdf152b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fcf70f67.css",
+    "static/js/main.4cdf152b.js"
+  ]
+}
