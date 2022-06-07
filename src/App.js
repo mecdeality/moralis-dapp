@@ -7,7 +7,7 @@ import {
   Routes,
   Link,
   NavLink,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 import Transfer from "./components/Transfer/transfer";
 import DexContainer from "./components/DEX/dexcontainer";
@@ -36,7 +36,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/moralis-dapp" element={<Redirect to="/" />} />
+          <Route path="/moralis-dapp" element={<Navigate to="/" replace />} />
           <Route exact path="/" element={<Home />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/dex" element={<DexContainer />} />
