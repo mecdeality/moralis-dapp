@@ -8,7 +8,7 @@ const chainLogo = {
 };
 
 export default function History() {
-  const { Moralis } = useMoralis();
+  const { Moralis, user, isAuthenticated } = useMoralis();
 
   const [histories, setHistories] = useState();
   const [pageLoading, setPageLoading] = useState(true);
@@ -17,13 +17,15 @@ export default function History() {
     async function getHistories() {
       const swapHistory = Moralis.Object.extend("SwapHistory");
       const query = new Moralis.Query(swapHistory);
-      const histories = await query.find();
-      setHistories(histories);
+
+      if (isAuthenticated) {
+        console.log("here");
+        const histories = await query.find({ user: user });
+        setHistories(histories);
+      }
     }
     getHistories();
-  }, []);
-
-  if (histories) console.log(histories);
+  }, [isAuthenticated]);
 
   return (
     <div style={{ width: "850px", marginTop: "130px" }}>

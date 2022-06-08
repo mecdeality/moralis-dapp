@@ -13,7 +13,7 @@ const chainIds = {
 
 export default function DEX({ chain, fromTokenArg, customTokens = {} }) {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
-  const { chainId, isAuthenticated, Moralis } = useMoralis();
+  const { chainId, isAuthenticated, Moralis, user } = useMoralis();
 
   const [fromModal, setFromModal] = useState({
     isOpened: false,
@@ -61,9 +61,7 @@ export default function DEX({ chain, fromTokenArg, customTokens = {} }) {
   function doSwap() {
     const swapHistory = Moralis.Object.extend("SwapHistory");
     const history = new swapHistory();
-
-    console.log(history);
-
+    trySwap(currentTrade);
     history
       .save({
         fromToken: currentTrade.fromToken,
@@ -72,6 +70,7 @@ export default function DEX({ chain, fromTokenArg, customTokens = {} }) {
         got: quote.toTokenAmount,
         gas: quote.estimatedGas,
         chain: chain,
+        user: user,
       })
       .then(
         (history) => {
@@ -83,8 +82,6 @@ export default function DEX({ chain, fromTokenArg, customTokens = {} }) {
       );
 
     console.log("here");
-
-    trySwap(currentTrade);
   }
 
   return (
